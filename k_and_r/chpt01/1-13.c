@@ -37,6 +37,8 @@ int main()
 		for (i = 0; i < MAXWORD; i++) {
 			if (wlens[i] >= j)
 				printf("  #");
+			else if (wlens[i] > 0)
+				printf("   ");
 		}
 		putchar('\n');
 	}
