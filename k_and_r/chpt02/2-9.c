@@ -38,11 +38,10 @@ int bitcount(unsigned x);
 
 int main(int argc, char *argv[])
 {
-	unsigned x = 37;
-
-	printf("Test x: %s\n", byte_to_binary(x));
-
-	printf("Result: %d 1-bits\n", bitcount(x));
+	for (unsigned int i=0; i<200; i+=23) {
+		printf("Test number: %s\n", byte_to_binary(i));
+		printf("Result: %d 1-bits\n", bitcount(i));
+	}
 }
 
 int bitcount(unsigned x)
