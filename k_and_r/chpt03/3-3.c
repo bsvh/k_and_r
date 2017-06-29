@@ -26,21 +26,20 @@ void expand(char s1[], char s2[])
 				endchar = s1[++i];
 			/* lone characters */
 			} else {
-				s2[j++] = s1[i];
+				startchar = endchar = s1[i];
 			}
 		else if (i < n-2) {
 			startchar = s1[i];
 			endchar = s1[i+2];
 			offset = 2;
 		} else {
+			startchar = endchar = s1[i];
 			s2[j++] = s1[i];
 		}
 
-		if (startchar != '\0') {
-			for (char c=startchar; c<=endchar; c++)
-				s2[j++] = c;
-			i += offset;
-		}
+		for (char c=startchar; c<=endchar; c++)
+			s2[j++] = c;
+		i += offset;
 	}
 	s2[j] = '\0';
 }
