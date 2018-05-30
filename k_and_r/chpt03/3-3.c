@@ -19,17 +19,17 @@ void expand(char s1[], char s2[])
 
 		if (s1[i] == '-') {
 			if (i == 0 || i == n-1)
-				startchar = endchar = s1[i];
+				s2[j++] = '-';
 			else {
 				/* avoid duplication */
 				startchar = s1[i-1] + 1;
 				endchar = s1[++i];
+				for (char c=startchar; c<=endchar; c++)
+					s2[j++] = c;
 			}
 		} else 
-			startchar = endchar = s1[i];
+			s2[j++] = s1[i];
 
-		for (char c=startchar; c<=endchar; c++)
-			s2[j++] = c;
 	}
 	s2[j] = '\0';
 }
