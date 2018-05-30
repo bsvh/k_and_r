@@ -12,34 +12,24 @@
 void expand(char s1[], char s2[])
 {
 	char startchar, endchar;
-	int offset;
 	int j = 0;
 	for (int i=0, n=strlen(s1); i<n; i++) {
 		startchar = '\0';
 		endchar = '\0';
-		offset = 0;
 
-		if (s1[i+1] != '-') 
-			/* we are at second - of form a-b-c */
-			if (i < n-1 && i > 2 && s1[i] == '-'){
-				startchar = s1[i-1];
-				endchar = s1[++i];
-			/* lone characters */
-			} else {
+		if (s1[i] == '-') {
+			if (i == 0 || i == n-1)
 				startchar = endchar = s1[i];
+			else {
+				/* avoid duplication */
+				startchar = s1[i-1] + 1;
+				endchar = s1[++i];
 			}
-		else if (i < n-2) {
-			startchar = s1[i];
-			endchar = s1[i+2];
-			offset = 2;
-		} else {
+		} else 
 			startchar = endchar = s1[i];
-			s2[j++] = s1[i];
-		}
 
 		for (char c=startchar; c<=endchar; c++)
 			s2[j++] = c;
-		i += offset;
 	}
 	s2[j] = '\0';
 }
